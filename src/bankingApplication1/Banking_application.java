@@ -3,7 +3,9 @@ import java .util.Scanner;
 public class Banking_application {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        //create the object of the class bankAccount
+        BankAccount bank1=new BankAccount("xyz","15SE55157");
+        bank1.showMenu();
 
     }
 }
@@ -24,6 +26,9 @@ public class Banking_application {
         if(amount!=0){
             balance=balance+amount;
             previousTransactions=amount;
+
+            System.out.println("amount deposited is:"+previousTransactions);
+            System.out.println("balance is:"+balance);
         }
 
     }
@@ -31,13 +36,17 @@ public class Banking_application {
     void withdraw(int amount){
         if(amount!=0){
             balance=balance-amount;
+
             previousTransactions= -amount;
+            System.out.println("amount withdraw is:"+previousTransactions);
+            System.out.println("balance is:"+balance);
+
         }
     }
 
     void getpreviousTransactions(){
         if(previousTransactions>0){
-            System.out.println("deposited"+previousTransactions);
+            System.out.println("deposited   "+previousTransactions);
         }
         else if(previousTransactions<0){
             System.out.println("withdraw:"+Math.abs(previousTransactions));
@@ -63,11 +72,13 @@ public class Banking_application {
             System.out.println("select the object");
             System.out.println("==============");
             option =sc.next().charAt(0);
+            Character.toUpperCase(option);
             switch (option){
                 case 'A':
                     System.out.println("=============");
                     System.out.println("Balance is:-"+ balance);
                     System.out.println("==============");
+                    System.out.println();
                     break;
                 case 'B':
                     System.out.println("==============");
@@ -75,6 +86,7 @@ public class Banking_application {
                     System.out.println("==============");
                     int amount=sc.nextInt();
                     deposit(amount);
+                    System.out.println();
                     break;
                 case 'C':
                     System.out.println("==============");
@@ -82,19 +94,24 @@ public class Banking_application {
                     System.out.println("==============");
                     int amount2=sc.nextInt();
                     withdraw(amount2);
+                    System.out.println();
                     break;
                 case 'D':
                     System.out.println("==============");
                     getpreviousTransactions();
                     System.out.println("==============");
+                    System.out.println();
                     break;
                 case'E':
                     System.out.println("==============");
+                    System.out.println("THANK YOU (;");
+                    System.out.println();
                     break;
 
                 default:
                     System.out.println("==============");
                     System.out.println("invalid option");
+                    System.out.println();
                     break;
             }
         }while (option!='E');
